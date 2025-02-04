@@ -1,3 +1,4 @@
+import BalanceCard from "@/components/balance-card";
 import Image from "next/image";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { WalletConnectButton } from "@/components/wallet-connect-button";
@@ -5,7 +6,7 @@ import { WalletConnectButton } from "@/components/wallet-connect-button";
 export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <header className="flex flex-col gap-4 row-start-2 items-center sm:items-start">
+      <aside className="flex flex-col gap-4 row-start-2 items-center sm:items-start">
         <h1 className="text-4xl font-semibold">Web3 + Solana Next App</h1>
         <p className="text-lg text-center sm:text-left">
           A web3-first Next.js app for Solana
@@ -14,10 +15,13 @@ export default function Home() {
           <ThemeToggle />
           <WalletConnectButton />
         </div>
-      </header>
+        <div className="flex w-full items-center justify-center mt-8">
+          <BalanceCard />
+        </div>
+      </aside>
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <Image
-          className="mx-auto animate-pulse"
+          className="mx-auto"
           src="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%9A%80</text></svg>"
           alt="Rocket logo"
           width={200}
