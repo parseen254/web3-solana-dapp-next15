@@ -17,7 +17,7 @@ export default function Home() {
       </header>
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <Image
-          className="mx-auto"
+          className="mx-auto animate-pulse"
           src="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%9A%80</text></svg>"
           alt="Rocket logo"
           width={200}
