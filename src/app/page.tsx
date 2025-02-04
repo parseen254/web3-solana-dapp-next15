@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { WalletConnectButton } from "@/components/wallet-connect-button";
 
 export default function Home() {
   return (
@@ -9,7 +10,10 @@ export default function Home() {
         <p className="text-lg text-center sm:text-left">
           A web3-first Next.js app for Solana
         </p>
-        <ThemeToggle />
+        <div className="flex w-full items-center justify-between">
+          <ThemeToggle />
+          <WalletConnectButton />
+        </div>
       </header>
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <Image
