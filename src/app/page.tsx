@@ -37,9 +37,9 @@ export default function Home() {
           <li className="mb-2">
             🛠️ Dev Tools:
             <ul className="list-disc ml-10 mt-1">
-              <li>🛠️ TypeScript 5</li>
-              <li>🎨 Tailwind CSS 3.4.1</li>
-              <li>✅ ESLint 9 (+ Next.js config)</li>
+              <li>🛠️ TypeScript 5.7.3</li>
+              <li>🎨 Tailwind CSS 3.4.17</li>
+              <li>✅ ESLint 9.19 (+ Next.js config)</li>
             </ul>
           </li>
         </ol>
