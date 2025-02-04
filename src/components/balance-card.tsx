@@ -35,15 +35,11 @@ function SolValue({ amount }: { amount: number }) {
 }
 
 function PriceChangeIndicator({ change }: { change: number }) {
-  if (!change) return null;
-  
   return (
     <div
       className={cn(
         "text-xs px-2 py-0.5 rounded-full",
-        change >= 0
-          ? "bg-green-100 text-green-600"
-          : "bg-red-100 text-red-600"
+        change >= 0 ? "bg-green-100 text-green-600" : "bg-red-100 text-red-600"
       )}
     >
       <NumberFlow

@@ -30,15 +30,20 @@ export async function getBalance(
 
   // Fetch 24h price change from CoinRanking
   const coinRankingResponse = await fetch(
-    "https://api.coinranking.com/v2/coin/zNZHO_Sjf"
+    "https://api.coinranking.com/v2/coin/zNZHO_Sjf",
+    {
+      next: {
+        revalidate: 60 // 1 minute in seconds
+      }
+    }
   );
   const coinRankingData = await coinRankingResponse.json();
-  const priceChange = coinRankingData?.data?.coin?.change || 0;
+  const priceChange = coinRankingData?.data?.coin?.change / 100 || 0;
 
   return {
     sol: solAmount,
     usd: solAmount * solPrice,
-    change24h: priceChange / 100,
+    change24h: priceChange,
     timestamp: Date.now(),
   };
 }
