@@ -35,6 +35,14 @@ export default function Home() {
             </code>
           </li>
           <li className="mb-2">
+            🎨 UI & Theming:
+            <ul className="list-disc ml-10 mt-1">
+              <li>📦 Radix UI Primitives 2.1.5</li>
+              <li>✨ Lucide Icons 0.474</li>
+              <li>🌓 Next Themes 0.4.4</li>
+            </ul>
+          </li>
+          <li className="mb-2">
             🛠️ Dev Tools:
             <ul className="list-disc ml-10 mt-1">
               <li>🛠️ TypeScript 5.7.3</li>
