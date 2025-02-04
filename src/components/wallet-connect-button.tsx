@@ -1,8 +1,9 @@
 "use client";
 
+import { Loader2, WalletIcon } from "lucide-react";
+
 import { Button } from "./ui/button";
 import { Suspense } from "react";
-import { WalletIcon } from "lucide-react";
 import dynamic from "next/dynamic";
 
 const WalletMultiButton = dynamic(
@@ -16,7 +17,8 @@ export function WalletConnectButton() {
     <div className="relative items-center gap-2 inline-flex bg-primary text-primary-foreground rounded-xl">
       <Suspense
         fallback={
-          <Button className="font-semibold text-xl mx-4 my-2">
+          <Button disabled className="font-semibold text-xl mx-4 my-2">
+            <Loader2 className="ml-2 animate-spin" />
             Loading...
           </Button>
         }
