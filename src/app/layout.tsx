@@ -2,9 +2,11 @@ import "./globals.css";
 
 import { Geist, Geist_Mono } from "next/font/google";
 
-import { AppWalletProvider } from "../providers/WalletProvider";
+import { AppWalletProvider } from "@/providers/WalletProvider";
 import type { Metadata } from "next";
+import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "next-themes";
+import { auth } from "@/app/auth";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,11 +30,12 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -40,7 +43,9 @@ export default function RootLayout({
       >
         <AppWalletProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            {children}
+            <SessionProvider basePath={"/auth"} session={session}>
+              {children}
+            </SessionProvider>
           </ThemeProvider>
         </AppWalletProvider>
       </body>

@@ -23,8 +23,7 @@ export function WalletConnectButton() {
           </Button>
         }
       >
-        <WalletIcon className="ml-2" />
-        <WalletMultiButton />
+        <WalletMultiButton startIcon={<WalletIcon className="ml-2" />} />
       </Suspense>
     </div>
   );

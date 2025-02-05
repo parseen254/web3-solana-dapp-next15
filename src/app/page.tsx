@@ -1,7 +1,7 @@
+import AuthCard from "@/components/auth-card";
 import BalanceCard from "@/components/balance-card";
 import Image from "next/image";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { WalletConnectButton } from "@/components/wallet-connect-button";
 
 export default function Home() {
   return (
@@ -13,7 +13,9 @@ export default function Home() {
         </p>
         <div className="flex w-full items-center justify-between">
           <ThemeToggle />
-          <WalletConnectButton />
+        </div>
+        <div className="flex w-full items-center justify-center mt-8">
+          <AuthCard />
         </div>
         <div className="flex w-full items-center justify-center mt-8">
           <BalanceCard />
