@@ -45,6 +45,21 @@ export default function Home() {
             </code>
           </li>
           <li className="mb-2">
+            🌐 Web3 Integration:
+            <ul className="list-disc ml-10 mt-1">
+              <li>🔑 @solana/web3.js</li>
+              <li>👛 @solana/wallet-adapter-react</li>
+              <li>🎯 @solana/wallet-adapter-base</li>
+            </ul>
+          </li>
+          <li className="mb-2">
+            🔐 Authentication:
+            <ul className="list-disc ml-10 mt-1">
+              <li>🎫 NextAuth.js</li>
+              <li>🔒 @auth/core</li>
+            </ul>
+          </li>
+          <li className="mb-2">
             🎨 UI & Theming:
             <ul className="list-disc ml-10 mt-1">
               <li>📦 Radix UI Primitives 2.1.5</li>
