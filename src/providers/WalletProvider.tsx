@@ -10,7 +10,6 @@ import {
 import {
   PhantomWalletAdapter,
   SolflareWalletAdapter,
-  UnsafeBurnerWalletAdapter,
 } from "@solana/wallet-adapter-wallets";
 
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
@@ -44,7 +43,7 @@ export function AppWalletProvider({ children }: { children: React.ReactNode }) {
       // new TrustWalletAdapter(),
       new PhantomWalletAdapter(),
       new SolflareWalletAdapter(),
-      new UnsafeBurnerWalletAdapter(),
+      // new UnsafeBurnerWalletAdapter(),
     ],
     []
   );
