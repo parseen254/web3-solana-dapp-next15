@@ -41,21 +41,21 @@ A modern web3-first Next.js 15 application template with built-in Solana blockch
 
 1. Clone the repository:
 
-```bash
-git clone <repository-url>
-```
+    ```bash
+    git clone <repository-url>
+    ```
 
 2. Install dependencies:
 
-```bash
-pnpm install
-```
+    ```bash
+    pnpm install
+    ```
 
 3. Run the development server:
 
-```bash
-pnpm dev
-```
+    ```bash
+    pnpm dev
+    ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
