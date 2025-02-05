@@ -1,12 +1,20 @@
 "use client";
 
+import CircularProgress from "@/components/ui/circular-progress";
 import NumberFlow from "@number-flow/react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 import { useBalance } from "@/hooks/useBalance";
+import { useState } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 
-function BalanceValue({ amount, className }: { amount: number; className?: string }) {
+function BalanceValue({
+  amount,
+  className,
+}: {
+  amount: number;
+  className?: string;
+}) {
   return (
     <NumberFlow
       format={{
@@ -60,7 +68,11 @@ function BalanceDisplay() {
   const { data, isLoading, error } = useBalance();
 
   if (!connected) {
-    return <span className="text-sm text-zinc-500">Connect wallet to view balance</span>;
+    return (
+      <span className="text-sm text-zinc-500">
+        Connect wallet to view balance
+      </span>
+    );
   }
 
   if (error) {
@@ -85,21 +97,34 @@ function BalanceDisplay() {
 }
 
 export default function BalanceCard() {
-  const { data } = useBalance();
+  const { data, lastUpdated } = useBalance();
+  const [key, setKey] = useState(0);
 
   return (
     <div
       className={cn(
         "flex-1 p-4 rounded-xl text-left transition-all relative",
-        "border border-zinc-200 dark:border-zinc-800",
-        "ring-2 ring-blue-500 dark:ring-blue-400"
+        "border border-primary",
+        "ring-2 ring-primary"
       )}
     >
       <div className="flex items-center justify-between mb-2 mt-2">
-        <span className="text-sm font-medium">Balance</span>
-        {data && <PriceChangeIndicator change={data.change24h} />}
+        <div className="flex flex-col content-between justify-center gap-2">
+          <span className="text-sm font-medium">Balance</span>
+          <BalanceDisplay />
+        </div>
+        <div className="flex flex-col justify-between items-center gap-4">
+          {data && <PriceChangeIndicator change={data.change24h} />}
+          {lastUpdated && (
+            <CircularProgress
+              key={key}
+              size={30}
+              duration={9000}
+              onComplete={() => setKey((prev) => prev + 1)}
+            />
+          )}
+        </div>
       </div>
-      <BalanceDisplay />
     </div>
   );
 }
