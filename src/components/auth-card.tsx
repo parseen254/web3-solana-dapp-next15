@@ -12,15 +12,16 @@ import { useWallet } from "@solana/wallet-adapter-react";
 
 function AuthDisplay() {
   const { data: session, status } = useSession();
-  const { connected, publicKey, signMessage } = useWallet();
+  const { connected, publicKey, signMessage, disconnecting, wallet } =
+    useWallet();
   const [isAuthenticating, setIsAuthenticating] = useState(false);
 
   // Handle wallet disconnection
   useEffect(() => {
-    if (!connected && session) {
+    if (disconnecting && session) {
       signOut();
     }
-  }, [connected, session]);
+  }, [wallet, session, disconnecting]);
 
   const handleAuth = async () => {
     if (!connected || !publicKey || !signMessage) return;

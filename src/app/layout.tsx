@@ -43,7 +43,11 @@ export default async function RootLayout({
       >
         <AppWalletProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <SessionProvider basePath={"/auth"} session={session}>
+            <SessionProvider
+              basePath={"/auth"}
+              session={session}
+              refetchInterval={0}
+            >
               {children}
             </SessionProvider>
           </ThemeProvider>

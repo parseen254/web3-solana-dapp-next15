@@ -7,11 +7,10 @@ import {
   ConnectionProvider,
   WalletProvider,
 } from "@solana/wallet-adapter-react";
+
 import {
-  PhantomWalletAdapter,
   SolflareWalletAdapter,
 } from "@solana/wallet-adapter-wallets";
-
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { clusterApiUrl } from "@solana/web3.js";
@@ -41,7 +40,7 @@ export function AppWalletProvider({ children }: { children: React.ReactNode }) {
       // new TorusWalletAdapter(),
       // new SafePalWalletAdapter(),
       // new TrustWalletAdapter(),
-      new PhantomWalletAdapter(),
+      // new PhantomWalletAdapter(),
       new SolflareWalletAdapter(),
       // new UnsafeBurnerWalletAdapter(),
     ],
