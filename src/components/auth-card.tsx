@@ -2,25 +2,18 @@
 
 import { CheckCircle2, KeyRound, Loader2 } from "lucide-react";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { WalletConnectButton } from "@/components/wallet-connect-button";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 
 function AuthDisplay() {
   const { data: session, status } = useSession();
-  const { connected, publicKey, signMessage, disconnecting } = useWallet();
+  const { connected, publicKey, signMessage } = useWallet();
   const [isAuthenticating, setIsAuthenticating] = useState(false);
-
-  // Handle wallet disconnection
-  useEffect(() => {
-    if (disconnecting && session) {
-      signOut();
-    }
-  }, [session, disconnecting]);
 
   const handleAuth = async () => {
     if (!connected || !publicKey || !signMessage) return;
@@ -41,7 +34,7 @@ function AuthDisplay() {
         message: message,
         signature: Buffer.from(signature).toString("base64"),
         redirect: false,
-        callbackUrl: window.location.origin // Ensure redirect back to same page
+        callbackUrl: window.location.origin, // Ensure redirect back to same page
       });
 
       if (result?.error) {
