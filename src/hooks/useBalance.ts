@@ -48,5 +48,8 @@ export function useBalance(pollingInterval = 10000) {
     return () => clearInterval(interval);
   }, [fetchBalance, connected, publicKey, pollingInterval]);
 
-  return state;
+  return {
+    ...state,
+    refetch: fetchBalance
+  };
 }

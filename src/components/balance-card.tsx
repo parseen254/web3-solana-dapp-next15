@@ -119,7 +119,7 @@ export default function BalanceCard() {
             <CircularProgress
               key={key}
               size={30}
-              duration={9000}
+              duration={7000}
               onComplete={() => setKey((prev) => prev + 1)}
             />
           )}
