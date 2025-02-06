@@ -106,7 +106,7 @@ export default function BalanceCard() {
 
   const wallet = useWallet();
   const { connection } = useConnection();
-  const isDevnet = connection.rpcEndpoint.includes("devnet");
+  const isDevnet = !connection.rpcEndpoint.includes("mainnet-beta");
   const [isAirdropping, setIsAirdropping] = useState(false);
 
   const requestAirdrop = async () => {
