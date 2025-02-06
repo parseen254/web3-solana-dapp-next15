@@ -152,7 +152,7 @@ export default function BalanceCard() {
           )}
         </div>
       </div>
-      {isDevnet && (
+      {isDevnet && wallet.publicKey && (
         <Button
           variant="outline"
           size="sm"
