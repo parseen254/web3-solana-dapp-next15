@@ -1,12 +1,16 @@
 "use client";
 
+import { useConnection, useWallet } from "@solana/wallet-adapter-react";
+
+import { Button } from "@/components/ui/button";
 import CircularProgress from "@/components/ui/circular-progress";
+import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 import NumberFlow from "@number-flow/react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 import { useBalance } from "@/hooks/useBalance";
 import { useState } from "react";
-import { useWallet } from "@solana/wallet-adapter-react";
 
 function BalanceValue({
   amount,
@@ -100,6 +104,29 @@ export default function BalanceCard() {
   const { data, lastUpdated } = useBalance();
   const [key, setKey] = useState(0);
 
+  const wallet = useWallet();
+  const { connection } = useConnection();
+  const isDevnet = connection.rpcEndpoint.includes("devnet");
+  const [isAirdropping, setIsAirdropping] = useState(false);
+
+  const requestAirdrop = async () => {
+    if (!wallet.publicKey) return;
+
+    try {
+      setIsAirdropping(true);
+      const signature = await connection.requestAirdrop(
+        wallet.publicKey,
+        LAMPORTS_PER_SOL
+      );
+      await connection.confirmTransaction(signature);
+      toast.success("Airdrop of 1 SOL successful!");
+    } catch (error) {
+      toast.error("Airdrop failed: " + (error as Error).message);
+    } finally {
+      setIsAirdropping(false);
+    }
+  };
+
   return (
     <div
       className={cn(
@@ -125,6 +152,17 @@ export default function BalanceCard() {
           )}
         </div>
       </div>
+      {isDevnet && (
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={requestAirdrop}
+          disabled={isAirdropping}
+          className="py-4 w-full"
+        >
+          {isAirdropping ? "Requesting..." : "Request 1 SOL"}
+        </Button>
+      )}
     </div>
   );
 }

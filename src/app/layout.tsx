@@ -6,6 +6,7 @@ import { AppWalletProvider } from "@/providers/WalletProvider";
 import type { Metadata } from "next";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "next-themes";
+import { Toaster } from "@/components/ui/sonner";
 import { auth } from "@/app/auth";
 
 const geistSans = Geist({
@@ -50,6 +51,7 @@ export default async function RootLayout({
             >
               {children}
             </SessionProvider>
+            <Toaster />
           </ThemeProvider>
         </AppWalletProvider>
       </body>
